@@ -13,9 +13,14 @@ here = path.abspath(path.dirname(__file__))
 # Get the long description from the README file
 with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
-    
+
 setup(
     name='kakaku_robot',
+    entry_points={
+        'console_scripts': [
+            'kakaku_robot = kakaku_robot.main:main',
+        ],
+    },
     version='0.1',
     description='Crawler of kakaku.com',
     long_description=long_description,
@@ -23,11 +28,11 @@ setup(
     author='rv',
     author_email='yo-maruya@rescala.jp',
     keywords='crawler',
-    install_requires=['requests','bs4', 'selenium' , 'lxml'],
+    install_requires=['requests','bs4', 'selenium' , 'lxml', 'dataclass-csv', 'pandas'],
     url='',
     license='MIT',
     packages=find_packages(exclude=('tests')),
-    python_requires='>=3.5',
+    python_requires='>=3.7',
     project_urls={  # Optional
         'Bug Reports': 'https://github.com/rv-rescala/catscore/issues',
         'Source': 'https://github.com/rv-rescala/catscore'
