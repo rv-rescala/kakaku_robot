@@ -22,24 +22,18 @@ from dataclasses import asdict
 class Ranking:
     base_url = "https://kakaku.com"
     
-    def __init__(self, binary_location, executable_path, headless, proxy=None):
+    def __init__(self, proxy=None):
         """[summary]
         
         Arguments:
-            binary_location {[type]} -- [description]
-            executable_path {[type]} -- [description]
             headless {[type]} -- [description]
         
         Keyword Arguments:
             proxy {[type]} -- [description] (default: {None})
         """
-        self.binary_location = binary_location
-        self.executable_path = executable_path
-        self.headless =  headless
         self.proxy = proxy
         self.request = CatsRequestSession()
-        #self.session = CatsWebDriverSession(binary_location=self.binary_location, executable_path=self.executable_path, proxy=self.proxy, headless=self.headless)
-
+        
     def top(self):
         """[https://kakaku.com/rankingにアクセス]
         

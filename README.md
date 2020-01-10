@@ -1,19 +1,21 @@
-# Cats core
+# kakaku_robot
 
-Cats core is a Python library for [cats project](https://finance.rescala.jp/?page_id=204).
+Kakaku lobot is a scraping library for https://kakaku.com/
 
 ## Installation
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
 ```bash
-pip install catscore
+pip install kakaku_robot
 ```
 
 ## Usage
 
 ```python
-tbd = "TBD
+from kakaku_robot.site.ranking import Ranking
+result = Ranking().ranking.all_category_ranking(pandas=True)
+result.to_csv("kakau_rank.csv")
 ```
 
 ## Contributing

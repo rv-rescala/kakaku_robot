@@ -3,20 +3,20 @@ import logging
 from kakaku_robot.site.ranking import Ranking
 
 def main():
-    #parser = argparse.ArgumentParser(description=PCConfig.app_name)
+    parser = argparse.ArgumentParser(description="kakaku robot")
 
     # args params
-    #parser.add_argument('-conf', '--config', help="[must] configuration file", required=True)
-    #args = parser.parse_args()
-    #print(args)
+    parser.add_argument('-f', '--function', nargs='*', choices=['all_category_ranking'], help="functions")
+    parser.add_argument('-d', '--dump_path', help="result dump path", required=True)
+    args = parser.parse_args()
+    print(args)
     
-    binary_location="/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
-    executable_path="/Users/rv/workspace/docker/finance_db/tools/chromedriver"
-    headless=False
-    
-    ranking = Ranking(binary_location=binary_location, executable_path=executable_path, headless=headless)
-    result = ranking.all_category_ranking(pandas=True)
-    result.to_csv("/Users/rv/Desktop/kakau_rank.csv")
-    
+    for f in args.function:
+        if f == "all_category_ranking":
+            output_path = f"{args.dump_path}/kakau_rank.csv"
+            print(f"all_category_ranking output to {output_path}")
+            result = Ranking().all_category_ranking(pandas=True)
+            result.to_csv(output_path)
+            
 if __name__ == "__main__":
     main()
