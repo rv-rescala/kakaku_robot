@@ -4,14 +4,9 @@ import requests
 import re
 import json
 import time
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import Select
-import selenium
-from catscore.session import CatsRequestSession, CatsWebDriverSession
-from catscore.logger import CatsLogging as logging
-from catscore.time import get_today_date, get_current_time
+from catscore.http.request import CatsRequest
+from catscore.lib.logger import CatsLogging as logging
+from catscore.lib.time import get_today_date, get_current_time
 import logging
 from bs4 import BeautifulSoup
 from kakaku_robot.model.item import RankedItem
@@ -32,7 +27,7 @@ class Ranking:
             proxy {[type]} -- [description] (default: {None})
         """
         self.proxy = proxy
-        self.request = CatsRequestSession()
+        self.request = CatsRequest()
         
     def top(self):
         """[https://kakaku.com/rankingにアクセス]
@@ -52,7 +47,7 @@ class Ranking:
         Returns:
             [type] -- [description]
         """
-        soup = self.top()[1].find("ul", {"class": "category"}).findAll("li")
+        soup = self.top().content.find("ul", {"class": "category"}).findAll("li")
         r = dict(map(lambda s: (s.text, s.find("a").get("href")), soup))
         return r
 
@@ -65,7 +60,7 @@ class Ranking:
         Returns:
             [type] -- [description]
         """
-        top_soup = self.request.get(f"{self.base_url}{folder}", response_content_type="html")[1]
+        top_soup = self.request.get(f"{self.base_url}{folder}", response_content_type="html").content
         rank_category = top_soup.find("div", {"class": "h3box clearfix"}).find("h3").text
         gathered_date = top_soup.find("p", {"class": "daytime"}).text
         logging.info(rank_category)
@@ -113,7 +108,7 @@ class Ranking:
         head_ranking = _parse_page(top_soup)
         logging.info(head_ranking)
         # 21位以下
-        tail_ranking = list(map(lambda ranking_url: _parse_page(self.request.get(f"{self.base_url}{ranking_url}", response_content_type="html")[1]), ranking_urls.values()))
+        tail_ranking = list(map(lambda ranking_url: _parse_page(self.request.get(f"{self.base_url}{ranking_url}", response_content_type="html").content), ranking_urls.values()))
         logging.info(tail_ranking)
         tail_ranking.append(head_ranking)
         result = list(itertools.chain.from_iterable(tail_ranking))
