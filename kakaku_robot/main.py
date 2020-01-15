@@ -1,6 +1,7 @@
 import argparse
 import logging
 from kakaku_robot.site.ranking import Ranking
+from catscore.lib.time import get_today_date
 
 def main():
     parser = argparse.ArgumentParser(description="kakaku robot")
@@ -13,7 +14,7 @@ def main():
     
     for f in args.function:
         if f == "all_category_ranking":
-            output_path = f"{args.dump_path}/kakau_rank.csv"
+            output_path = f"{args.dump_path}/kakau_rank_{get_today_date}.csv"
             print(f"all_category_ranking output to {output_path}")
             result = Ranking().all_category_ranking(pandas=True)
             result.to_csv(output_path)
