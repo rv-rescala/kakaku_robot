@@ -21,7 +21,7 @@ setup(
             'kakaku_robot = kakaku_robot.main:main',
         ],
     },
-    version='0.1.5',
+    version='0.1.6',
     description='Scriping library for kakaku.com',
     long_description=long_description,
     long_description_content_type='text/markdown',
