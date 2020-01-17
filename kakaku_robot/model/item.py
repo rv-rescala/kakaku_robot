@@ -23,3 +23,4 @@ class RankedItem:
     item_min_price: str
     item_review_rate: str
     item_bbs_num: str
+    update_date: str

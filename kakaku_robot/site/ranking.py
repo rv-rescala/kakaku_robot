@@ -13,6 +13,7 @@ from kakaku_robot.model.item import RankedItem
 import itertools
 import pandas as pd
 from dataclasses import asdict
+from catscore.lib.time import get_today_date
 
 class Ranking:
     base_url = "https://kakaku.com"
@@ -97,7 +98,8 @@ class Ranking:
                                     item_url=f"{self.base_url}{item_url}",
                                     item_min_price=item_min_price,
                                     item_review_rate=item_review_rate,
-                                    item_bbs_num=item_bbs_num)
+                                    item_bbs_num=item_bbs_num,
+                                    update_date=get_today_date())
                         return item
                     except:
                         return None
