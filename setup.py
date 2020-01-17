@@ -15,13 +15,13 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='kakaku_robot',
+    name='kakakucom',
     entry_points={
         'console_scripts': [
-            'kakaku_robot = kakaku_robot.main:main',
+            'kakakucom = kakakucom.main:main',
         ],
     },
-    version='0.1.7',
+    version='0.1.8',
     description='Scriping library for kakaku.com',
     long_description=long_description,
     long_description_content_type='text/markdown',

@@ -1,6 +1,6 @@
 import argparse
 import logging
-from kakaku_robot.site.ranking import Ranking
+from kakakucom.site.ranking import Ranking
 from catscore.lib.time import get_today_date
 
 def main():

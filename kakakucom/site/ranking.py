@@ -9,7 +9,7 @@ from catscore.lib.logger import CatsLogging as logging
 from catscore.lib.time import get_today_date, get_current_time
 import logging
 from bs4 import BeautifulSoup
-from kakaku_robot.model.item import RankedItem
+from kakakucom.model.item import RankedItem
 import itertools
 import pandas as pd
 from dataclasses import asdict

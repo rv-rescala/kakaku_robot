@@ -7,7 +7,7 @@ Kakaku lobot is a scraping library for https://kakaku.com/
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 
 ```bash
-pip install kakaku_robot
+pip install kakakucom
 ```
 
 ## Usage
@@ -18,10 +18,24 @@ result = Ranking().ranking.all_category_ranking(pandas=True)
 result.to_csv("kakau_rank.csv")
 ```
 
+```shell
+kakakucom -f all_category_ranking -d [Your output folder]
+```
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
+
+## Spark install
+
+        To build Spark with maven you can run:
+          ./build/mvn -DskipTests clean package
+        Building the source dist is done in the Python directory:
+          cd python
+          python setup.py sdist
+          pip install dist/*.tar.gz
+    
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
