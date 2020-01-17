@@ -21,7 +21,7 @@ setup(
             'kakakucom = kakakucom.main:main',
         ],
     },
-    version='0.1.8',
+    version='0.1.9',
     description='Scriping library for kakaku.com',
     long_description=long_description,
     long_description_content_type='text/markdown',

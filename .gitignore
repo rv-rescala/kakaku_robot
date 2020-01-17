@@ -4,6 +4,7 @@
 .vscode
 .pypirc
 tests/
+conf/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

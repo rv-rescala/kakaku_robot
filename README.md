@@ -28,13 +28,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 Please make sure to update tests as appropriate.
 
 ## Spark install
-
-        To build Spark with maven you can run:
-          ./build/mvn -DskipTests clean package
-        Building the source dist is done in the Python directory:
-          cd python
-          python setup.py sdist
-          pip install dist/*.tar.gz
     
 
 ## License
